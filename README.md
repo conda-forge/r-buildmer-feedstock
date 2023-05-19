@@ -1,11 +1,11 @@
-About r-buildmer
-================
+About r-buildmer-feedstock
+==========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-buildmer-feedstock/blob/main/LICENSE.txt)
 
 Home: https://CRAN.R-project.org/package=buildmer
 
 Package license: BSD-2-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-buildmer-feedstock/blob/main/LICENSE.txt)
 
 Summary: Finds the largest possible regression model that will still converge for various types of regression analyses (including mixed models and generalized additive models) and then optionally performs stepwise elimination similar to the forward and backward effect-selection methods in SAS, based on the change in log-likelihood or its significance, Akaike's Information Criterion, the Bayesian Information Criterion, the explained deviance, or the F-test of the change in R².
 
