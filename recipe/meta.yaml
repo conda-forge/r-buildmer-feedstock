@@ -57,6 +57,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - conda-forge/r
     - johanneskoester
 
 # The original CRAN metadata for this package was:
