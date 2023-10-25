@@ -1,4 +1,4 @@
-{% set version = "2.10.1" %}
+{% set version = "2.11" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,7 +11,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/buildmer_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/buildmer/buildmer_{{ version }}.tar.gz
-  sha256: 73597ebe2f67764a6a258909764aa1478fc351f824038c32a7a6196bde4b34f2
+  sha256: 64897e16f39024559b997fc6a7ec2eb7578f84a29d9d1ff4b5227d29e2feaf52
 
 build:
   merge_build_host: true  # [win]
