@@ -1,7 +1,6 @@
 {% set version = "2.11" %}
 
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-buildmer
@@ -14,8 +13,7 @@ source:
   sha256: 64897e16f39024559b997fc6a7ec2eb7578f84a29d9d1ff4b5227d29e2feaf52
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
 
   # This is required to make R link correctly on Linux.
   rpaths:
