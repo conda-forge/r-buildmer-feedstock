@@ -1,5 +1,4 @@
-{% set version = "2.11" %}
-
+{% set version = "2.12" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -10,31 +9,35 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/buildmer_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/buildmer/buildmer_{{ version }}.tar.gz
-  sha256: 64897e16f39024559b997fc6a7ec2eb7578f84a29d9d1ff4b5227d29e2feaf52
+  sha256: 43aa08a3c466dbe812fdbdccdfc702fc9e8acbd7a7d8bcf7243af1556b248d09
 
 build:
-  number: 1
-
-  # This is required to make R link correctly on Linux.
+  number: 0
+  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
-    - {{ posix }}zip  # [win]
-
+    - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-lme4
     - r-mgcv
     - r-nlme
-
+    - r-reformulas
   run:
     - r-base
     - r-lme4
     - r-mgcv
     - r-nlme
+    - r-reformulas
 
 test:
   commands:
@@ -44,10 +47,12 @@ test:
 about:
   home: https://CRAN.R-project.org/package=buildmer
   license: BSD-2-Clause
-  license_file: LICENSE
   summary: Finds the largest possible regression model that will still converge for various types of regression analyses (including mixed models and generalized additive models) and then optionally performs stepwise elimination similar to the forward and backward effect-selection methods in SAS, based on the change in log-likelihood
     or its significance, Akaike's Information Criterion, the Bayesian Information Criterion, the explained deviance, or the F-test of the change in R².
   license_family: BSD
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/BSD_2_clause'
+    - LICENSE
 
 extra:
   recipe-maintainers:
@@ -55,7 +60,6 @@ extra:
     - johanneskoester
 
 # The original CRAN metadata for this package was:
-
 # Package: buildmer
 # Title: Stepwise Elimination and Term Reordering for Mixed-Effects Regression
 # Version: 2.8
@@ -76,7 +80,6 @@ extra:
 # Maintainer: Cesko C. Voeten <cvoeten@gmail.com>
 # Repository: CRAN
 # Date/Publication: 2023-01-06 19:20:02 UTC
-
 # See
 # https://docs.conda.io/projects/conda-build for
 # more information about meta.yaml
