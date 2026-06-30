@@ -1,18 +1,18 @@
-{% set version = "2.12" %}
+{% set version = "2.13" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
   name: r-buildmer
-  version: {{ version|replace("-", "_") }}
+  version: "{{ version|replace("-", "_") }}"
 
 source:
   url:
     - {{ cran_mirror }}/src/contrib/buildmer_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/buildmer/buildmer_{{ version }}.tar.gz
-  sha256: 43aa08a3c466dbe812fdbdccdfc702fc9e8acbd7a7d8bcf7243af1556b248d09
+  sha256: 84ce06f31dd1d0efc6eedf6e77d436f7d82c3e5ccf8c434d7d49e38e33ba1843
 
 build:
-  number: 1
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -32,12 +32,14 @@ requirements:
     - r-mgcv
     - r-nlme
     - r-reformulas
+    - r-rlang
   run:
     - r-base
     - r-lme4
     - r-mgcv
     - r-nlme
     - r-reformulas
+    - r-rlang
 
 test:
   commands:
@@ -47,8 +49,8 @@ test:
 about:
   home: https://CRAN.R-project.org/package=buildmer
   license: BSD-2-Clause
-  summary: Finds the largest possible regression model that will still converge for various types of regression analyses (including mixed models and generalized additive models) and then optionally performs stepwise elimination similar to the forward and backward effect-selection methods in SAS, based on the change in log-likelihood
-    or its significance, Akaike's Information Criterion, the Bayesian Information Criterion, the explained deviance, or the F-test of the change in R².
+  summary: Finds the largest possible regression model that will still converge for various types of regression analyses (including mixed models and generalized additive models) and then optionally performs stepwise elimination similar to the forward and backward effect-selection methods in SAS, based on the change in 
+    log-likelihood or its significance, Akaike's Information Criterion, the Bayesian Information Criterion, the explained deviance, or the F-test of the change in R².
   license_family: BSD
   license_file:
     - '{{ environ["PREFIX"] }}/lib/R/share/licenses/BSD_2_clause'
