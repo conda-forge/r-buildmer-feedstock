@@ -3,7 +3,7 @@
 
 package:
   name: r-buildmer
-  version: {{ version|replace("-", "_") }}
+  version: "{{ version|replace("-", "_") }}"
 
 source:
   url:
@@ -32,12 +32,14 @@ requirements:
     - r-mgcv
     - r-nlme
     - r-reformulas
+    - r-rlang
   run:
     - r-base
     - r-lme4
     - r-mgcv
     - r-nlme
     - r-reformulas
+    - r-rlang
 
 test:
   commands:
